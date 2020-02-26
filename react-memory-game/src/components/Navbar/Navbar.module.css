@@ -24,3 +24,8 @@
 .navbar ul li:hover {
     color: gray;
 }
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
