@@ -3,13 +3,9 @@ import styles from './Footer.module.css';
 
 const Footer = (props) => {
     return (
-        <nav className={styles.footer}>
-            <h1>MEMORY GAME</h1>
-            <ul>
-                <li>Login</li>
-                <li>Signup</li>
-            </ul>
-        </nav>
+        <footer className={styles.footer}>
+            <p>Copyright &copy; Memory Game {new Date().getFullYear()}</p>
+        </footer>
     )
 }
 

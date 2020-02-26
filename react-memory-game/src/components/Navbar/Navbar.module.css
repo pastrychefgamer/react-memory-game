@@ -8,6 +8,10 @@
     box-shadow: 2px 2px 7px 2px lightgray;
 }
 
+.navbar h1 {
+    font-size: 2.5rem;
+}
+
 .navbar ul {
     display: flex;
     list-style: none;
@@ -15,7 +19,6 @@
 
 .navbar ul li {
     margin: 1rem;
-    font-weight: 500;
 }
 
 .navbar ul li:hover {
