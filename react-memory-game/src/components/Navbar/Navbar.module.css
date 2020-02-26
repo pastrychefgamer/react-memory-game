@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    background-color: rgb(90, 7, 7);
+    color: white;
+    justify-content: space-around;
+    box-shadow: 2px 2px 7px 2px lightgray;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 1rem;
+    font-weight: 500;
+}
+
+.navbar ul li:hover {
+    color: gray;
+}

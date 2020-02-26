@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Navbar.module.css';
+import styles from './Footer.module.css';
 
-const Navbar = (props) => {
+const Footer = (props) => {
     return (
-        <nav className={styles.navbar}>
+        <nav className={styles.footer}>
             <h1>MEMORY GAME</h1>
             <ul>
                 <li>Login</li>
@@ -13,4 +13,4 @@ const Navbar = (props) => {
     )
 }
 
-export default Navbar;
+export default Footer;
