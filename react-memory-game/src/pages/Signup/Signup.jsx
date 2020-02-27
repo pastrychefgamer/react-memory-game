@@ -1,9 +1,13 @@
 import React from 'react';
-// import styles from '../Signup.module.css';
+import SignupForm from '../../components/SignupForm/SignupForm';
+import styles from '../../components/SignupForm/SignupForm.module.css';
 
 const Signup = (props) => {
     return (
-        <h1>Signup</h1>
+        <main>
+            <h1>Signup</h1>
+            <SignupForm />
+        </main>
     );
 }
 
