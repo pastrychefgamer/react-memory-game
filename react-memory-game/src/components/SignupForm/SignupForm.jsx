@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './SignupForm.module.css';
 
+import userService from '../../utils/userService';
+
 class SignupForm extends React.Component {
     state = this.getInitialState();
 
@@ -13,15 +15,33 @@ class SignupForm extends React.Component {
         };
     }
 
+    isFormValid = () => {
+        return (
+            this.state.name && 
+            this.state.email && 
+            this.state.password &&
+            this.state.password === this.state.passwordConf
+        );
+    }
+
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        this.setState(this.getInitialState());
+        if(!this.isFormValid()) return;
+        try {
+            const { name, email, password } = this.state
+            await userService.signup({ name, email, password });
+            this.setState(this.getInitialState(), () => {
+                alert('user signed up!')
+            });
+        } catch (error) {
+            
+        }
     }
 
 
@@ -66,7 +86,7 @@ class SignupForm extends React.Component {
                         onChange={this.handleChange}
                         />
 
-                    <button type="submit">Submit</button>
+                    <button disabled={!this.isFormValid()} type="submit">Submit</button>
                 </fieldset>
             </form>
         );
