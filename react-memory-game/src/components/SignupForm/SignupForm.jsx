@@ -11,7 +11,8 @@ class SignupForm extends React.Component {
             name: '',
             email: '',
             password: '',
-            passwordConf: ''
+            passwordConf: '',
+            error: ''
         };
     }
 
@@ -26,9 +27,10 @@ class SignupForm extends React.Component {
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            error: '',
+            ...{[e.target.name]: e.target.value}
         });
-    };
+    }
 
     handleSubmit = async e => {
         e.preventDefault();
@@ -40,14 +42,24 @@ class SignupForm extends React.Component {
                 this.props.history.push('/')
             });
         } catch (error) {
-            
+            this.setState({
+                name: '',
+                email: '',
+                password: '',
+                passwordConf: '',
+                error: error.message
+            });
         }
     }
 
 
     render () {
         return (
-            <form onSubmit={this.handleSubmit} className={styles.form}>
+            <section className={styles.section}>
+                {
+                    this.state.error && <p>{this.state.error}</p>
+                }
+            <form onSubmit={this.handleSubmit} >
                 <fieldset>
                     <legend>Personal Details</legend>
                     <label htmlFor="name">Full Name</label>
@@ -89,6 +101,7 @@ class SignupForm extends React.Component {
                     <button disabled={!this.isFormValid()} type="submit">Submit</button>
                 </fieldset>
             </form>
+            </section>
         );
     }
 }
