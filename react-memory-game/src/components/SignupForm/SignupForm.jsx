@@ -37,7 +37,7 @@ class SignupForm extends React.Component {
             const { name, email, password } = this.state
             await userService.signup({ name, email, password });
             this.setState(this.getInitialState(), () => {
-                alert('user signed up!')
+                this.props.history.push('/')
             });
         } catch (error) {
             
