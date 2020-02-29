@@ -33,7 +33,10 @@ class App extends Component {
             <Login />
             }/>
             <Route exact path="/signup" render={props =>
-            <Signup {...props} />
+            <Signup 
+            {...props} 
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            />
             }/>
           </Switch>
         </div>
