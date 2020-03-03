@@ -35,7 +35,7 @@ class App extends Component {
             <Route exact path="/" render={props =>
               <Home />
             }/>
-            <Route exact path="/GamePage" render={props =>
+            <Route exact path="/game" render={props =>
               <GamePage />
             }/>
             <Route exact path="/login" render={props =>

@@ -13,6 +13,9 @@ const Navbar = (props) => {
         :
         <>
         <li>
+            <Link to="/game">Play</Link>
+        </li>
+        <li>
             <Link to="/login">Login</Link>
         </li>
         <li>
