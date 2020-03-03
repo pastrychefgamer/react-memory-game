@@ -19,6 +19,7 @@
 
 .navbar ul li {
     margin: 1rem;
+    font-size: 1.1rem;
 }
 
 .navbar ul li:hover {
