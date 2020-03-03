@@ -1,11 +1,11 @@
 import React from 'react';
 
-import styles from './Gameboard.module.css';
+import styles from './GameBoard.module.css';
 
 const GameBoard = (props) => (
-    <div className={styles.GameBoard}>
+    <main className={styles.main}>
         <h1>Game Board</h1>
-    </div>
+    </main>
 );
 
 export default GameBoard;
