@@ -10,6 +10,7 @@ import Signup from './pages/Signup/Signup';
 
 import './App.css';
 import userService from './utils/userService';
+import GamePage from './pages/GamePage/GamePage';
 
 class App extends Component {
   state = {
@@ -33,6 +34,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={props =>
               <Home />
+            }/>
+            <Route exact path="/GamePage" render={props =>
+              <GamePage />
             }/>
             <Route exact path="/login" render={props =>
             <Login 
