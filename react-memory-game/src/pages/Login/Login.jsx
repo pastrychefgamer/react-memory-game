@@ -6,7 +6,10 @@ const Login = (props) => {
     return (
         <main className={styles.main}>
         <div>image will go here</div>
-        <LoginForm {...props} />
+        <LoginForm 
+        {...props} 
+        handleSignUpOrLogin={props.handleSignupOrLogin}
+        />
         <div>image will go here</div>
         </main>
     );
