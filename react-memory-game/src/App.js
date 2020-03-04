@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-
 import './App.css';
 import userService from './utils/userService';
 import GamePage from './pages/GamePage/GamePage';
 
 class App extends Component {
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
+    elapsedTime: 0,
+    isTiming: true
+  }
+
+  handleTimerUpdate = () => {
+    this.setState((curState) => ({elapsedTime: ++curState.elapsedTime}));
   }
 
   handleSignupOrLogin = () => {
@@ -36,7 +39,11 @@ class App extends Component {
               <Home />
             }/>
             <Route exact path="/game" render={props =>
-              <GamePage />
+              <GamePage 
+              elapsedTime={this.state.elapsedTime}
+              isTiming={this.state.isTiming}
+              handleTimerUpdate={this.handleTimerUpdate}
+              />
             }/>
             <Route exact path="/login" render={props =>
             <Login 
