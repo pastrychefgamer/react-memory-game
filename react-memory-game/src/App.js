@@ -20,6 +20,10 @@ class App extends Component {
     this.setState((curState) => ({elapsedTime: ++curState.elapsedTime}));
   }
 
+  handleNewGameClick = () => {
+    this.setState(this.state());
+  }
+
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() })
   }
@@ -42,6 +46,7 @@ class App extends Component {
               <GamePage 
               elapsedTime={this.state.elapsedTime}
               isTiming={this.state.isTiming}
+              handleNewGameClick={this.handleNewGameClick}
               handleTimerUpdate={this.handleTimerUpdate}
               />
             }/>

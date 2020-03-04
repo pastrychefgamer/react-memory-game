@@ -1,6 +1,9 @@
 import React from 'react';
 import GameBoard from '../.././components/Gameboard/GameBoard';
 import GameTimer from '../../components/GameTimer/GameTimer';
+import NewGameButton from '../../components/NewGameButton/NewGameButton';
+
+
 import styles from './GamePage.module.css';
 
 const GamePage = (props) => {
@@ -12,6 +15,7 @@ const GamePage = (props) => {
                 handleTimerUpdate={props.handleTimerUpdate}
                 isTiming={props.isTiming}
             />
+            <NewGameButton />
         </main>
     )
 }
