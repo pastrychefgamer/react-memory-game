@@ -8,6 +8,7 @@ import Signup from './pages/Signup/Signup';
 import './App.css';
 import userService from './utils/userService';
 import GamePage from './pages/GamePage/GamePage';
+import HighScoresPage from './pages/HighScoresPage/HighScoresPage';
 
 class App extends Component {
   state = {
@@ -62,6 +63,10 @@ class App extends Component {
             handleSignupOrLogin={this.handleSignupOrLogin}
             />
             }/>
+            <Route exact path='/high-scores' render={() => (
+              <HighScoresPage />
+            )}
+            />
           </Switch>
         </div>
         <Footer />
