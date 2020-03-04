@@ -30,7 +30,6 @@ class LoginForm extends React.Component {
                 this.props.handleSignupOrLogin();
                 this.props.history.push('/');
             });
-            
         } catch (error) {
             this.setState({
                 email: '',
