@@ -11,15 +11,13 @@ const charURI = "v1/public/characters";
 
 let path = `${BASE_URL}${charURI}?ts=${ts}&apikey=${pubby}&hash=${hash}&limit=10`
 
-async function getSglChar(id) {
-    const charID = "1011334";
-    let charPath = `${path}/${charID}`
-    return fetch(charPath, {
-        mode: "cors"
-    }).then(response => response.json())
-}
-
-
+// async function getSglChar(id) {
+//     const charID = "1011334";
+//     let charPath = `${path}/${charID}`
+//     return fetch(charPath, {
+//         mode: "cors"
+//     }).then(response => response.json())
+// }
 
 async function getChars() {
     return fetch(path, {
@@ -47,7 +45,7 @@ function shuffle(arr) {
 }
 
 export default {
-   getCharFormattedArray,
-   getChars,
-   shuffle
+    getCharFormattedArray,
+    getChars,
+    shuffle
 };
