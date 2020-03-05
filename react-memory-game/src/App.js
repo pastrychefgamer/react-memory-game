@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import underscore from 'underscore';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -9,13 +10,40 @@ import './App.css';
 import userService from './utils/userService';
 import GamePage from './pages/GamePage/GamePage';
 import HighScoresPage from './pages/HighScoresPage/HighScoresPage';
+import scoresService from './utils/scoresService';
+import marvelApiService from './services/marvel-api';
 
 class App extends Component {
   state = {
     user: userService.getUser(),
     elapsedTime: 0,
-    isTiming: true
+    isTiming: true,
+    scores: [],
+    cards: []
   }
+
+handleShuffCards = () => {
+  const newShuffle = underscore.shuffle( this.state.cards);
+  this.setState({ cards: newShuffle });
+}
+
+  // getSglChar () {
+  //   let getCards = [];
+  //   let cards = getChars();
+  //   return (
+  //     cards.then(result => {
+  //       result.data.results.map(charSgl => {
+  //           let charObj = {
+  //               id: charSgl.id,
+  //               name: charSgl.name,
+  //               thumbnail: `${charSgl.thumbnail.path}/standard_medium.${charSgl.thumbnail.extension}`
+  //           }
+  //           getCards.push(charObj);
+  //           getCards.push(charObj);
+  //       })
+  //     })
+  //   )
+  // }
 
   handleTimerUpdate = () => {
     this.setState((curState) => ({elapsedTime: ++curState.elapsedTime}));
@@ -25,14 +53,34 @@ class App extends Component {
     this.setState(this.state());
   }
 
+  // handleUpdateScores = () => {
+  //   this.setState({ scores });
+  // }
+
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() })
+    this.setState({ user: userService.getUser() });
+    this.handleGenerateCards();
   }
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ user: null, cards: [] });
   }
+
+  handleGenerateCards = async () => {
+    const { data } = await marvelApiService.getChars()
+    const formmatedList = marvelApiService.getCharFormattedArray(data.results);
+    const shuffledCards = marvelApiService.shuffle(formmatedList);
+    this.setState({ cards: shuffledCards });
+  }
+
+async componentDidMount() {
+    //const scores = await scoresService.index();
+    //this.setState({ scores });
+    if(userService.getUser()) {
+      this.handleGenerateCards();
+    }
+ }
 
   render() {
     return (
@@ -49,6 +97,10 @@ class App extends Component {
               isTiming={this.state.isTiming}
               handleNewGameClick={this.handleNewGameClick}
               handleTimerUpdate={this.handleTimerUpdate}
+              handleShuffCards={this.handleShuffCards}
+              {...this.state.cards.map(({ cards }, idx) => (
+                <h1 key={idx}>{cards}</h1> 
+              ))}
               />
             }/>
             <Route exact path="/login" render={props =>
@@ -64,9 +116,14 @@ class App extends Component {
             />
             }/>
             <Route exact path='/high-scores' render={() => (
-              <HighScoresPage />
-            )}
-            />
+              userService.getUser() ?
+              <HighScoresPage
+              scores={this.state.scores}
+              handleUpdateScores={this.handleUpdateScores}
+              />
+                :
+              <Redirect to='/login' />
+            )}/>
           </Switch>
         </div>
         <Footer />
