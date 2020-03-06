@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -43,11 +43,21 @@ class App extends Component {
     this.setState({ user: null, cards: [] });
   }
 
+  /*--- Game Logic---*/
   handleGenerateCards = async () => {
     const { data } = await marvelApiService.getChars()
     const formatedList = marvelApiService.getCharFormattedArray(data.results);
     const shuffledCards = marvelApiService.shuffle(formatedList);
     this.setState({ cards: shuffledCards });
+  }
+
+  handleSetCardIsFlipped(cardID, isFlipped) {
+    const setCards = useState(handleGenerateCards());
+    setCards(prev => prev.map(c => {
+      if (c.id !== cardID)
+      return c;
+      return {...c, isFlipped};
+    }));
   }
 
   async componentDidMount() {
@@ -73,6 +83,7 @@ class App extends Component {
               isTiming={this.state.isTiming}
               handleNewGameClick={this.handleNewGameClick}
               handleTimerUpdate={this.handleTimerUpdate}
+              handleGenerateCards={this.handleGenerateCards}
               />
             }/>
             <Route exact path="/login" render={props =>
