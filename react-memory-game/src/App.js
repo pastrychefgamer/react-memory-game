@@ -51,12 +51,21 @@ class App extends Component {
     this.setState({ cards: shuffledCards });
   }
 
-  handleSetCardIsFlipped(cardID, isFlipped) {
+  handleSetCardIsFlipped = (cardID, isFlipped) => {
     const setCards = useState(handleGenerateCards());
     setCards(prev => prev.map(c => {
       if (c.id !== cardID)
       return c;
       return {...c, isFlipped};
+    }));
+  }
+
+  handleSetCardCanFlip = (cardID, canFlip) => {
+    const setCards = useState(handleGenerateCards());
+    setCards(prev => prev.map(c => {
+      if (c.id !== cardID)
+      return c;
+      return {...c, canFlip};
     }));
   }
 
