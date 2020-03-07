@@ -5,12 +5,13 @@ import styles from './GameBoard.module.css';
 const GameBoard = (props) => (
     <main className={styles.main}>
         <h1>Game Board</h1>
-        {
-            props.cards.map((card, idx) => {
-                return <Card key={idx} card={card} />
-            })
-        }
-
+        <div className={styles.div}>
+            {
+                props.cards.map((card, idx) => {
+                    return <Card key={idx} card={card} />
+                })
+            }
+        </div>
     </main>
 );
 
