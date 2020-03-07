@@ -1,10 +1,11 @@
 import React from 'react';
+import Image from 'react-image';
 import styles from './Card.module.css';
 
 const Card = (props) => {
     return (
         <main className={styles.main}>
-            <p>I'm a card</p>
+            <Image src={props.card.thumbnail}></Image>
         </main>
     )
 }

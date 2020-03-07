@@ -10,15 +10,16 @@ const GamePage = (props) => {
     return (
         <main className={styles.main}>
             <GameBoard 
+                cards={props.cards}
             />
             <div>
                 <MatchSum />
                 <GameTimer
                     elapsedTime={props.elapsedTime}
-                    handleTimerUpdate={props.handleTimerUpdate}
                     isTiming={props.isTiming}
+                    handleTimerUpdate={props.handleTimerUpdate}
                 />
-                <NewGameButton />
+                <NewGameButton handleNewGameClick={props.handleNewGameClick} />
             </div>
         </main>
     )

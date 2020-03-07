@@ -3,10 +3,8 @@ import styles from './Home.module.css';
 
 const Home = (props) => {
     return (
-        <main className={styles.home}>
-            <h1>Homepage</h1>
-        </main>
-    )
-}
+        <main className={styles.main} />
+    );
+};
 
 export default Home;

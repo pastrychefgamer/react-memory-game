@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -11,6 +11,7 @@ import GamePage from './pages/GamePage/GamePage';
 import HighScoresPage from './pages/HighScoresPage/HighScoresPage';
 import scoresService from './utils/scoresService';
 import marvelApiService from './services/marvel-api';
+// import marvel from '../../../public/images/marvel.png';
 
 class App extends Component {
   state = {
@@ -51,23 +52,35 @@ class App extends Component {
     this.setState({ cards: shuffledCards });
   }
 
-  handleSetCardIsFlipped = (cardID, isFlipped) => {
-    const setCards = useState(handleGenerateCards());
-    setCards(prev => prev.map(c => {
-      if (c.id !== cardID)
-      return c;
-      return {...c, isFlipped};
-    }));
-  }
+  // handleSetCardIsFlipped = (cardID, isFlipped) => {
+  //   setCards(prev => prev.map(c => {
+  //     if (c.id !== cardID)
+  //     return c;
+  //     return {...c, isFlipped};
+  //   }));
+  // }
 
-  handleSetCardCanFlip = (cardID, canFlip) => {
-    const setCards = useState(handleGenerateCards());
-    setCards(prev => prev.map(c => {
-      if (c.id !== cardID)
-      return c;
-      return {...c, canFlip};
-    }));
-  }
+  // handleSetCardCanFlip = (cardID, canFlip) => {
+  //   setCards(prev => prev.map(c => {
+  //     if (c.id !== cardID)
+  //     return c;
+  //     return {...c, canFlip};
+  //   }));
+  // }
+
+  // handleResetFirstAndSecondCards = () => {
+  //   setFirstCard(null);
+  //   setSecondCard(null);
+  // }
+
+  // handleOnSuccessGuess = () => {
+  //   setCardCanFlip(firstCard.id, false);
+	// 	setCardCanFlip(secondCard.id, false);
+	// 	setCardIsFlipped(firstCard.id, false);
+	// 	setCardIsFlipped(secondCard.id, false);
+	// 	resetFirstAndSecondCards();
+	// }
+
 
   async componentDidMount() {
       //const scores = await scoresService.index();
@@ -92,7 +105,7 @@ class App extends Component {
               isTiming={this.state.isTiming}
               handleNewGameClick={this.handleNewGameClick}
               handleTimerUpdate={this.handleTimerUpdate}
-              handleGenerateCards={this.handleGenerateCards}
+              cards={this.state.cards}
               />
             }/>
             <Route exact path="/login" render={props =>

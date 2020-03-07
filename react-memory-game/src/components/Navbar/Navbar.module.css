@@ -12,6 +12,10 @@
     font-size: 2.5rem;
 }
 
+.navbar img {
+    height: 5rem;
+}
+
 .navbar ul {
     display: flex;
     list-style: none;

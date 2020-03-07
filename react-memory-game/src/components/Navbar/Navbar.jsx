@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 import styles from './Navbar.module.css';
+import marvelLogo from '../../images/marvel.png';
+
 
 const Navbar = (props) => {
     const conditionalUI = userService.getUser()
@@ -9,12 +11,12 @@ const Navbar = (props) => {
         <li>
             <Link to="" onClick={props.handleLogout}>Logout</Link>
         </li>
-        </>
-        :
-        <>
         <li>
             <Link to="/game">Play</Link>
         </li>
+        </>
+        :
+        <>
         <li>
             <Link to="/login">Login</Link>
         </li>
@@ -24,8 +26,9 @@ const Navbar = (props) => {
         </>
     return (
         <nav className={styles.navbar}>
+            <img src={marvelLogo} />
             <Link to="/">
-            <h1>MARVEL MEMORY GAME</h1>
+            <h1>MEMORY GAME</h1>
             </Link>
             <ul>
                 { conditionalUI }
