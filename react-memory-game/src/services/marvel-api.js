@@ -1,6 +1,6 @@
 import underscore from 'underscore';
 const md5 = require('md5');
-const BASE_URL =  "http://gateway.marvel.com/";
+const BASE_URL =  "https://gateway.marvel.com/";
 
 const ts = new Date().getTime();
 const pubby = "bf2c6e8a34dadf498e632240c2612e4d";
