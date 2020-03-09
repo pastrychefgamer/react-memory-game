@@ -11,7 +11,6 @@ import GamePage from './pages/GamePage/GamePage';
 import HighScoresPage from './pages/HighScoresPage/HighScoresPage';
 import scoresService from './utils/scoresService';
 import marvelApiService from './services/marvel-api';
-// import marvel from '../../../public/images/marvel.png';
 
 class App extends Component {
   state = {
