@@ -11,9 +11,6 @@ const Navbar = (props) => {
         <li>
             <Link to="" onClick={props.handleLogout}>Logout</Link>
         </li>
-        <li>
-            <Link to="/game">Play</Link>
-        </li>
         </>
         :
         <>
@@ -22,6 +19,9 @@ const Navbar = (props) => {
         </li>
         <li>
             <Link to="/signup">Signup</Link>
+        </li>
+        <li>
+            <Link to="/game">Play</Link>
         </li>
         </>
     return (
